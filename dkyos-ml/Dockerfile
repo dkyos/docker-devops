@@ -1,22 +1,24 @@
-# docker build -t tf-keras . 
+# docker build -t dkyos-ml . 
+
+#Create a hashed password, using the ipython terminal
+# from notebook.auth import passwd
+#passwd()
+#RUN jupyter notebook --generate-config
+#RUN echo "c.NotebookApp.password='sha1:***'">>/root/.jupyter/jupyter_notebook_config.py
+
+# FROM [repository]:[tag]
 FROM tensorflow/tensorflow:1.12.0-gpu-py3
- 
-# Start time
-RUN echo '================start================'
-RUN date
-RUN echo '================start================'
+MAINTAINER DongKyun Yun <dkyun77@gmail.com>
  
 # install dependencies from debian packages
 RUN apt-get update
-RUN apt-get update -qq \
- && apt-get install --no-install-recommends -y \
+RUN apt-get install --no-install-recommends -y \
     # install essentials
     build-essential \
     g++ \
     git \
     openssh-client \
     # install python
-    python \
     python-dev \
     python-pip \
     python-setuptools \
@@ -24,6 +26,7 @@ RUN apt-get update -qq \
     python-wheel \
     pkg-config \
     python-matplotlib \
+    python3-tk \
     python-pillow \
     # requirements for numpy
     libopenblas-base \
@@ -33,7 +36,6 @@ RUN apt-get update -qq \
     python-h5py \
     python-yaml \
     python-pydot \
-    python3-tk \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
  
@@ -51,12 +53,11 @@ RUN pip --no-cache-dir install -U keras \
     pandas_ml
  
 # quick test and dump package lists
-#RUN python -c "import tensorflow; print(tensorflow.__version__); import keras; print(keras.__version__);" 
+#RUN python -c "import tensorflow; print(tensorflow.__version__);"
+#RUN python -c "import keras; print(keras.__version__);" 
+
+COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 
 #WORKDIR /srv/
- 
-# End time
-RUN echo '================end================'
-RUN date
-RUN echo '================end================'
- 
+#CMD ["jupyter notebook"]
+# EXPOSE 8888
