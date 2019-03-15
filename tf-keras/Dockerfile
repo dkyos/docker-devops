@@ -7,11 +7,33 @@ RUN date
 RUN echo '================start================'
  
 # install dependencies from debian packages
+RUN apt-get update
 RUN apt-get update -qq \
  && apt-get install --no-install-recommends -y \
     # install essentials
     build-essential \
+    g++ \
+    git \
     openssh-client \
+    # install python
+    python \
+    python-dev \
+    python-pip \
+    python-setuptools \
+    python-virtualenv \
+    python-wheel \
+    pkg-config \
+    python-matplotlib \
+    python-pillow \
+    # requirements for numpy
+    libopenblas-base \
+    python-numpy \
+    python-scipy \
+    # requirements for keras
+    python-h5py \
+    python-yaml \
+    python-pydot \
+    python3-tk \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
  
