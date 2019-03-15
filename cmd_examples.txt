@@ -1,0 +1,32 @@
+
+
+
+tensorflow 
+tags
+1.13.1-py3-jupyter
+
+# latest
+docker run --runtime=nvidia -it -p 8888:8888 tensorflow/tensorflow:latest-gpu-py3-jupyter 
+docker run --runtime=nvidia -it -v /home/dkyos/dkyos:/tf/notebooks -p 8888:8888 tensorflow/tensorflow:latest-gpu-py3-jupyter 
+
+
+# 1.12.0
+docker run --runtime=nvidia -it -p 8888:8888 tensorflow/tensorflow:1.12.0-gpu-py3
+docker run --runtime=nvidia -it -v /home/dkyos/dkyos:/notebooks/dkyos -p 8888:8888 tensorflow/tensorflow:1.12.0-gpu-py3
+
+# 1.13.1
+docker run --runtime=nvidia -it -p 8888:8888 tensorflow/tensorflow:1.13.1-gpu-py3-jupyter
+
+#######
+
+docker ps
+docker exec -it [6203af125434] bash
+
+################
+pip install keras lime shap xgboost
+pip install gengim
+pip install --ignore-installed matplotlib
+
+
+
+################
