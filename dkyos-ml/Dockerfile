@@ -7,6 +7,8 @@
 #RUN echo "c.NotebookApp.password='sha1:***'">>/root/.jupyter/jupyter_notebook_config.py
 
 # FROM [repository]:[tag]
+# Dockerfiles for tensorflow
+# https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/dockerfiles
 FROM tensorflow/tensorflow:1.12.0-gpu-py3
 MAINTAINER DongKyun Yun <dkyun77@gmail.com>
  
@@ -43,6 +45,7 @@ RUN apt-get install --no-install-recommends -y \
 RUN pip --no-cache-dir install -U keras \
     lime \
     shap \
+    eli5 \
     xgboost \
     gensim \
     pandas \
