@@ -22,6 +22,7 @@ docker run --runtime=nvidia -it -p 8888:8888 tensorflow/tensorflow:1.13.1-gpu-py
 # dkyos-ml
 docker run --runtime=nvidia -it -p 8888:8888 -v /home/dkyos/dkyos:/notebooks/dkyos dkyos-ml:latest
 
+docker run --runtime=nvidia -it -p 8888:8888 -v /home/dkyos/dkyos:/notebooks/dkyos -v /home/dkyos/dkyos/public_github/docker-devops:/root/.keras dkyos-ml:latest
 
 ########################################################
 docker ps
