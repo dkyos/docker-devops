@@ -9,7 +9,7 @@
 # FROM [repository]:[tag]
 # Dockerfiles for tensorflow
 # https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/dockerfiles
-FROM tensorflow/tensorflow:1.12.0-gpu-py3
+FROM tensorflow/tensorflow:1.13.1-gpu-py3-jupyter
 MAINTAINER DongKyun Yun <dkyun77@gmail.com>
  
 # install dependencies from debian packages

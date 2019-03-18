@@ -18,13 +18,20 @@ docker run --runtime=nvidia -it -v /home/dkyos/dkyos:/notebooks/dkyos -p 8888:88
 # 1.13.1
 docker run --runtime=nvidia -it -p 8888:8888 tensorflow/tensorflow:1.13.1-gpu-py3-jupyter
 
+docker run --runtime=nvidia -it -p 8888:8888 --env http_proxy=http://172.21.101.204:3128 --env https_proxy=https://172.21.101.204:3128 -v /home/dkyos/dkyos:/tf/dkyos -v /home/dkyos/dkyos/public_github/docker-devops/keras:/root/.keras tensorflow/tensorflow:1.13.1-gpu-py3-jupyter
+
 ########################################################
 # dkyos-ml
-docker run --runtime=nvidia -it -p 8888:8888 -v /home/dkyos/dkyos:/notebooks/dkyos dkyos-ml:latest
+docker run --runtime=nvidia -it -p 8888:8888 -v /home/dkyos/dkyos:/tf/dkyos dkyos-ml:latest
 
-docker run --runtime=nvidia -it -p 8888:8888 -v /home/dkyos/dkyos:/notebooks/dkyos -v /home/dkyos/dkyos/public_github/docker-devops:/root/.keras dkyos-ml:latest
+docker run --runtime=nvidia -it -p 8888:8888 -v /home/dkyos/dkyos:/tf/dkyos -v /home/dkyos/dkyos/public_github/docker-devops:/root/.keras dkyos-ml:latest
 
-docker run --runtime=nvidia -it -p 8888:8888 --env http_proxy=http://172.21.101.204:3128 --env https_proxy=https://172.21.101.204:3128 -v /home/dkyos/dkyos:/notebooks/dkyos -v /home/dkyos/dkyos/public_github/docker-devops:/root/.keras dkyos-ml:latest
+docker run --runtime=nvidia -it -p 8888:8888 --env http_proxy=http://172.21.101.204:3128 --env https_proxy=https://172.21.101.204:3128 -v /home/dkyos/dkyos:/tf/dkyos -v /home/dkyos/dkyos/public_github/docker-devops/keras:/root/.keras dkyos-ml:latest
+
+docker run --runtime=nvidia -it -p 8888:8888 --env http_proxy=http://172.21.101.204:3128 --env https_proxy=https://172.21.101.204:3128 -v /home/dkyos/dkyos:/tf/dkyos -v /home/dkyos/dkyos/public_github/docker-devops/.keras:/root/.keras dkyos-ml:latest
+
+docker run --runtime=nvidia -it -p 8888:8888 --env http_proxy=http://172.21.101.204:3128 --env https_proxy=https://172.21.101.204:3128 -v /home/dkyos/dkyos:/tf/dkyos -v /home/dkyos/dkyos/public_github/docker-devops/.cache:/root/.cache -v /home/dkyos/dkyos/public_github/docker-devops/.config:/root/.config -v /home/dkyos/dkyos/public_github/docker-devops/.gnupg:/root/.gnupg -v /home/dkyos/dkyos/public_github/docker-devops/.ipython:/root/.ipython -v /home/dkyos/dkyos/public_github/docker-devops/.keras:/root/.keras -v /home/dkyos/dkyos/public_github/docker-devops/.local:/root/.local -v /home/dkyos/dkyos/public_github/docker-devops/.nv:/root/.nv dkyos-ml:latest
+
 
 
 ########################################################
