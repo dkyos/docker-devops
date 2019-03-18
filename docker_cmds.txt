@@ -24,6 +24,9 @@ docker run --runtime=nvidia -it -p 8888:8888 -v /home/dkyos/dkyos:/notebooks/dky
 
 docker run --runtime=nvidia -it -p 8888:8888 -v /home/dkyos/dkyos:/notebooks/dkyos -v /home/dkyos/dkyos/public_github/docker-devops:/root/.keras dkyos-ml:latest
 
+docker run --runtime=nvidia -it -p 8888:8888 --env http_proxy=http://172.21.101.204:3128 --env https_proxy=https://172.21.101.204:3128 -v /home/dkyos/dkyos:/notebooks/dkyos -v /home/dkyos/dkyos/public_github/docker-devops:/root/.keras dkyos-ml:latest
+
+
 ########################################################
 docker ps
 docker exec -it [6203af125434] bash
@@ -36,6 +39,10 @@ pip install --ignore-installed matplotlib
 
 ################
 docker run --runtime=nvidia -it -p 8888:8888 tf-keras
+
+
+
+docker build -t dkyos-ml --build-arg http_proxy=http://172.21.101.204:3128 --build-arg https_proxy=https://172.21.101.204:3128 .
 
 
 
