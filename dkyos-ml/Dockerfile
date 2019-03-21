@@ -53,6 +53,14 @@ RUN pip --no-cache-dir install -U keras \
     statsmodels \
     jupyter \
     seaborn \
+    pydot \
+    numpy \
+    scipy \
+    sklearn \
+    scikit-image \
+    matplotlib \
+    Cython \
+    requests \
     pandas_ml
  
 # quick test and dump package lists
