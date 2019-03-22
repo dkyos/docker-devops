@@ -42,7 +42,6 @@ RUN apt-get install --no-install-recommends -y \
     python-yaml \
     python-pydot \
     openjdk-8-jdk \
-    python-dev \
     python3-dev \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*

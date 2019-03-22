@@ -1,10 +1,17 @@
 
+docker run hello-world
+docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
+docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
+
 ########################################################
 # Repository in Dockerhub of tensorflow/tensorflow
 # tags
 tensorflow/tensorflow:latest-gpu-py3-jupyter 
 tensorflow/tensorflow:1.12.0-gpu-py3
 tensorflow/tensorflow:1.13.1-gpu-py3-jupyter
+
+docker run --runtime=nvidia -it -p 8888:8888 -v /home/dkyos/dkyos:/tf/dkyos tensorflow/tensorflow:1.13.1-gpu-py3-jupyter
+
 ########################################################
 # dkyos-ml
 docker run --runtime=nvidia -it -p 8888:8888 -v /home/dkyos/dkyos:/tf/dkyos dkyos-ml:latest
@@ -21,6 +28,12 @@ docker run --runtime=nvidia --name=dkyos-ml -it -p 8888:8888 --env http_proxy=ht
 
 
 ########################################################
+docker run --runtime=nvidia --name=dkyos-nlp -it -p 8888:8888 -v /home/dkyos/dkyos:/tf/dkyos -v /home/dkyos/dkyos/public_github/docker-devops/.cache:/root/.cache -v /home/dkyos/dkyos/public_github/docker-devops/.config:/root/.config -v /home/dkyos/dkyos/public_github/docker-devops/.gnupg:/root/.gnupg -v /home/dkyos/dkyos/public_github/docker-devops/.ipython:/root/.ipython -v /home/dkyos/dkyos/public_github/docker-devops/.keras:/root/.keras -v /home/dkyos/dkyos/public_github/docker-devops/.local:/root/.local -v /home/dkyos/dkyos/public_github/docker-devops/.nv:/root/.nv dkyos-ml:latest
+
+
+
+########################################################
+
 docker ps
 docker exec -it [6203af125434] bash
 docker exec -it dkyos-ml bash
@@ -38,6 +51,7 @@ pip install --ignore-installed matplotlib
 docker run --runtime=nvidia -it -p 8888:8888 tf-keras
 
 docker build -t dkyos-ml .
+docker build -t dkyos-nlp .
 docker build -t dkyos-ml --build-arg http_proxy=http://172.21.101.204:3128 --build-arg https_proxy=https://172.21.101.204:3128 .
 
 
