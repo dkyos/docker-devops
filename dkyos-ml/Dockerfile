@@ -75,7 +75,7 @@ RUN pip --no-cache-dir install -U keras \
 #RUN python -c "import tensorflow; print(tensorflow.__version__);"
 #RUN python -c "import keras; print(keras.__version__);" 
 
- RUN /bin/bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh)
+RUN /bin/bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh)
 
 COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 
