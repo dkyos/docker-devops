@@ -61,6 +61,7 @@ RUN pip --no-cache-dir install -U keras \
     matplotlib \
     Cython \
     requests \
+    opencv-python \
     pandas_ml
  
 # quick test and dump package lists
