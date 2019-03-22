@@ -13,7 +13,10 @@ FROM tensorflow/tensorflow:1.13.1-gpu-py3-jupyter
 MAINTAINER DongKyun Yun <dkyun77@gmail.com>
  
 # install dependencies from debian packages
+
+RUN add-apt-repository -y ppa:openjdk-r/ppa
 RUN apt-get update
+
 RUN apt-get install --no-install-recommends -y \
     # install essentials
     build-essential \
@@ -38,6 +41,9 @@ RUN apt-get install --no-install-recommends -y \
     python-h5py \
     python-yaml \
     python-pydot \
+    openjdk-8-jdk \
+    python-dev \
+    python3-dev \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
  
@@ -62,6 +68,7 @@ RUN pip --no-cache-dir install -U keras \
     Cython \
     requests \
     opencv-python \
+    konlpy \
     pandas_ml
  
 # quick test and dump package lists
