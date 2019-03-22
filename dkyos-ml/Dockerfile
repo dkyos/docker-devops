@@ -68,6 +68,7 @@ RUN pip --no-cache-dir install -U keras \
     requests \
     opencv-python \
     konlpy \
+    nltk \
     pandas_ml
  
 # quick test and dump package lists

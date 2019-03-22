@@ -31,6 +31,7 @@ docker run --runtime=nvidia --name=dkyos-ml -it -p 8888:8888 --env http_proxy=ht
 docker run --runtime=nvidia --name=dkyos-nlp -it -p 8888:8888 -v /home/dkyos/dkyos:/tf/dkyos -v /home/dkyos/dkyos/public_github/docker-devops/.cache:/root/.cache -v /home/dkyos/dkyos/public_github/docker-devops/.config:/root/.config -v /home/dkyos/dkyos/public_github/docker-devops/.gnupg:/root/.gnupg -v /home/dkyos/dkyos/public_github/docker-devops/.ipython:/root/.ipython -v /home/dkyos/dkyos/public_github/docker-devops/.keras:/root/.keras -v /home/dkyos/dkyos/public_github/docker-devops/.local:/root/.local -v /home/dkyos/dkyos/public_github/docker-devops/.nv:/root/.nv dkyos-ml:latest
 
 
+/root/nltk_data
 
 ########################################################
 
