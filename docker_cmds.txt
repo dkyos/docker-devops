@@ -25,6 +25,9 @@ docker ps
 docker exec -it [6203af125434] bash
 docker exec -it dkyos-ml bash
 
+docker rm $(docker ps -a -q)
+
+
 ################
 pip install keras lime shap xgboost
 pip install gengim
