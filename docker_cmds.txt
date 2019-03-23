@@ -62,3 +62,5 @@ apt-get update
 apt-get install openjdk-8-jdk
 bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh)
 
+
+pip install keras-vis
