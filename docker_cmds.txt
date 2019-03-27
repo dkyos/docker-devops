@@ -54,6 +54,7 @@ docker run --runtime=nvidia -it -p 8888:8888 tf-keras
 docker build -t dkyos-ml .
 docker build -t dkyos-nlp .
 docker build -t dkyos-ml --build-arg http_proxy=http://172.21.101.204:3128 --build-arg https_proxy=https://172.21.101.204:3128 .
+docker build -t dkyos-nlp --build-arg http_proxy=http://172.21.101.204:3128 --build-arg https_proxy=https://172.21.101.204:3128 .
 
 
 # for mecab

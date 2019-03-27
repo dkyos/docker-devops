@@ -26,56 +26,88 @@ error() {
 }
 
 build() {
-  docker build -t $IMAGE_NAME .
+    if [ -z "${http_proxy}" ]
+    then
+        docker build -t $IMAGE_NAME .
+    else
+        echo -e "http_proxy=${http_proxy}"
+        echo -e "https_proxy=${https_proxy}"
+        docker build -t $IMAGE_NAME \
+            --build-arg http_proxy="${http_proxy}" \
+            --build-arg https_proxy="${https_proxy}" \
+            .
+    fi
 
-  [ $? != 0 ] && \
+    [ $? != 0 ] && \
     error "Docker image build failed !" && exit 100
 }
 
 hello() {
-  log "RUN hello"
-  docker run hello-world
+    log "RUN hello"
+    docker run hello-world
 
-  [ $? != 0 ] && error "failed !" && exit 101
+    [ $? != 0 ] && error "failed !" && exit 101
 }
 
 run() {
     log "RUN"
     docker rm $IMAGE_NAME 
-    docker run \
-        --runtime=nvidia \
-        --name=$IMAGE_NAME \
-        -it \
-        -p 8888:8888 \
-        -v $LOCAL_SRC:$CONTAINER_SRC \
-        -v $(pwd)/.cache:/root/.cache \
-        -v $(pwd)/.config:/root/.config \
-        -v $(pwd)/.gnupg:/root/.gnupg \
-        -v $(pwd)/.ipython:/root/.ipython \
-        -v $(pwd)/.keras:/root/.keras \
-        -v $(pwd)/.local:/root/.local \
-        -v $(pwd)/.nv:/root/.nv \
-        dkyos-ml:latest
+    if [ -z "${http_proxy}" ]
+    then
+        docker run \
+            --runtime=nvidia \
+            --name=$IMAGE_NAME \
+            -it \
+            -p 8888:8888 \
+            -v $LOCAL_SRC:$CONTAINER_SRC \
+            -v $(pwd)/.cache:/root/.cache \
+            -v $(pwd)/.config:/root/.config \
+            -v $(pwd)/.gnupg:/root/.gnupg \
+            -v $(pwd)/.ipython:/root/.ipython \
+            -v $(pwd)/.keras:/root/.keras \
+            -v $(pwd)/.local:/root/.local \
+            -v $(pwd)/.nv:/root/.nv \
+            $IMAGE_NAME:latest
+    else
+        echo -e "http_proxy=${http_proxy}"
+        echo -e "https_proxy=${https_proxy}"
+        docker run \
+            --runtime=nvidia \
+            --name=$IMAGE_NAME \
+            -it \
+            -p 8888:8888 \
+            --env http_proxy="${http_proxy}" \
+            --env https_proxy="${https_proxy}" \
+            -v $LOCAL_SRC:$CONTAINER_SRC \
+            -v $(pwd)/.cache:/root/.cache \
+            -v $(pwd)/.config:/root/.config \
+            -v $(pwd)/.gnupg:/root/.gnupg \
+            -v $(pwd)/.ipython:/root/.ipython \
+            -v $(pwd)/.keras:/root/.keras \
+            -v $(pwd)/.local:/root/.local \
+            -v $(pwd)/.nv:/root/.nv \
+            $IMAGE_NAME:latest
+    fi
 
     [ $? != 0 ] && error "Npm install failed !" && exit 101
 }
 
 bash() {
-  log "BASH"
-  docker exec -it $IMAGE_NAME /bin/bash
+    log "BASH"
+    docker exec -it $IMAGE_NAME /bin/bash
 }
 
 stop() {
-  docker stop $CONTAINER_NAME
+    docker stop $CONTAINER_NAME
 }
 
 start() {
-  docker start $CONTAINER_NAME
+    docker start $CONTAINER_NAME
 }
 
 remove() {
-  log "Removing previous container $CONTAINER_NAME" && \
-  docker rm -f $CONTAINER_NAME &> /dev/null || true
+    log "Removing previous container $CONTAINER_NAME" && \
+    docker rm -f $CONTAINER_NAME &> /dev/null || true
 }
 
 help() {
