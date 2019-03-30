@@ -22,6 +22,7 @@ RUN apt-get install --no-install-recommends -y \
     build-essential \
     g++ \
     git \
+    vim \
     openssh-client \
     # install python
     python-dev \
@@ -69,6 +70,8 @@ RUN pip --no-cache-dir install -U keras \
     opencv-python \
     konlpy \
     nltk \
+    bert-serving-server \
+    bert-serving-client \
     pandas_ml
  
 # quick test and dump package lists
@@ -78,6 +81,7 @@ RUN pip --no-cache-dir install -U keras \
 RUN /bin/bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh)
 
 COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
+COPY vimrc /root/.vimrc
 
 #WORKDIR /srv/
 #CMD ["jupyter notebook"]
