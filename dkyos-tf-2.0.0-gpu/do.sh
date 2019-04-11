@@ -6,8 +6,8 @@ RED="\\033[1;31m"
 BLUE="\\033[1;34m"
 
 # Names to identify images and containers of this app
-IMAGE_NAME='dkyos-nlp-tf-2.0'
-CONTAINER_NAME="dkyos-nlp-tf-2.0"
+IMAGE_NAME='dkyos-tf-2.0.0-gpu'
+CONTAINER_NAME="dkyos-tf-2.0.0-gpu"
 
 # Usefull to run commands as non-root user inside containers
 USER="dkyos"

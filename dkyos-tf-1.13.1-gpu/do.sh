@@ -6,8 +6,8 @@ RED="\\033[1;31m"
 BLUE="\\033[1;34m"
 
 # Names to identify images and containers of this app
-IMAGE_NAME='dkyos-nlp'
-CONTAINER_NAME="dkyos-nlp"
+IMAGE_NAME='dkyos-tf-1.13.1-gpu'
+CONTAINER_NAME="dkyos-tf-1.13.1-gpu"
 
 # Usefull to run commands as non-root user inside containers
 USER="dkyos"
@@ -79,13 +79,6 @@ run() {
             --env http_proxy="${http_proxy}" \
             --env https_proxy="${https_proxy}" \
             -v $LOCAL_SRC:$CONTAINER_SRC \
-            -v $(pwd)/.cache:/root/.cache \
-            -v $(pwd)/.config:/root/.config \
-            -v $(pwd)/.gnupg:/root/.gnupg \
-            -v $(pwd)/.ipython:/root/.ipython \
-            -v $(pwd)/.keras:/root/.keras \
-            -v $(pwd)/.local:/root/.local \
-            -v $(pwd)/.nv:/root/.nv \
             $IMAGE_NAME:latest
     fi
 
