@@ -72,6 +72,7 @@ RUN pip --no-cache-dir install -U keras \
     nltk \
     bert-serving-server \
     bert-serving-client \
+    pyemd \
     pandas_ml
  
 # quick test and dump package lists
