@@ -55,11 +55,9 @@ run() {
     if [ -z "${http_proxy}" ]
     then
         docker run \
-            --runtime=nvidia \
             --name=$IMAGE_NAME \
             -it \
             -p 8888:8888 \
-            -v $LOCAL_SRC:$CONTAINER_SRC \
             -v $(pwd)/.cache:/root/.cache \
             -v $(pwd)/.config:/root/.config \
             -v $(pwd)/.gnupg:/root/.gnupg \
@@ -72,7 +70,6 @@ run() {
         echo -e "http_proxy=${http_proxy}"
         echo -e "https_proxy=${https_proxy}"
         docker run \
-            --runtime=nvidia \
             --name=$IMAGE_NAME \
             -it \
             -p 8888:8888 \

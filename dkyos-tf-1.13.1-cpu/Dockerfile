@@ -14,7 +14,7 @@ MAINTAINER DongKyun Yun <dkyun77@gmail.com>
  
 # install dependencies from debian packages
 
-RUN add-apt-repository -y ppa:openjdk-r/ppa
+#RUN add-apt-repository -y ppa:openjdk-r/ppa
 RUN apt-get update
 
 RUN apt-get install --no-install-recommends -y \
@@ -78,7 +78,7 @@ RUN pip --no-cache-dir install -U keras \
 #RUN python -c "import tensorflow; print(tensorflow.__version__);"
 #RUN python -c "import keras; print(keras.__version__);" 
 
-RUN /bin/bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh)
+#RUN /bin/bash <(curl -s https://raw.githubusercontent.com/konlpy/konlpy/master/scripts/mecab.sh)
 
 COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
 COPY vimrc /root/.vimrc
