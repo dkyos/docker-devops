@@ -1,0 +1,95 @@
+
+set esckeys
+set autoindent
+set bs=2
+set nocp
+
+set ts=4 
+set softtabstop=4      " TAB키를 눌렀을때 몇 칸을 이동?
+set tabstop=4          " 하나의 TAB을 몇 칸으로 인식? 
+set shiftwidth=4       " <<, >>을 눌렀을 때 몇 칸을 이동?
+set expandtab          " TAB을 space로 인식
+"set noexpandtab       " TAB을 TAB으로 인식         
+
+"set cindent 
+set smartindent 
+"set textwidth=79 
+set wrap 
+"set nowrapscan 
+set hlsearch
+set nobackup 
+set visualbell 
+set ruler 
+set hlsearch
+set ic
+if &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
+set t_Co=16
+set t_Sf=^[[3%dm
+set t_Sb=^[[4%dm
+set t_kb=^H
+fixdel
+endif
+if has("syntax")
+syntax on " Default to no syntax highlightning
+endif
+set fileencodings=ucs-bom,utf-8,euc-kr,latin1
+set encoding=utf-8
+set tags=./tags,../tags,../../tags,../../../tags
+set number
+map <F1> K
+map <F3> *
+map <F4> #
+map <F9> :tabnew<CR>
+map <F10> :tabnext<CR>
+map <F11> :tabprev<CR>
+map <F12> :tabclose<CR>
+map <C-h> gT
+map <C-l> gt
+map <F5> :TlistToggle<CR>
+
+"set wmh=50
+"set wmw=50
+map <F8> :res 1000<CR>:vertical res 1000<CR>
+map <C-w>m :res 1000<CR>:vertical res 1000<CR>
+
+"cscope
+"set csprg=/usr/bin/cscope
+"source $HOME/dkyos/dev-env/bin/cscope_maps.vim
+
+map <Up> <C-w>k
+map <Down> <C-w>j
+map <Left> <C-w>h
+map <Right> <C-w>l
+
+"---------------------------------------------------------------------
+" Keymap configuration for switching file buffer
+"---------------------------------------------------------------------
+map ,1 :b!1<cr>     " switch to file buffer #1
+map ,2 :b!2<cr>     " switch to file buffer #2
+map ,3 :b!3<cr>
+map ,4 :b!4<cr>
+map ,5 :b!5<cr>
+map ,6 :b!6<cr>
+map ,7 :b!7<cr>
+map ,8 :b!8<cr>
+map ,9 :b!9<cr>
+map ,0 :b!10<cr>    " switch to file buffer #10
+map ,w :bw<cr>      " close current file buffer
+
+
+"---------------------------------------------------------------------
+" For python dev
+"---------------------------------------------------------------------
+"let python_highlight_all = 1 
+
+"colorscheme evening
+"colorscheme vividchalk
+"colorscheme murphy
+"colorscheme delek
+"colorscheme zellner
+"colorscheme shine
+"colorscheme slate
+"colorscheme torte
+colorscheme koehler
+"colorscheme elflord
+"colorscheme peachpuff
