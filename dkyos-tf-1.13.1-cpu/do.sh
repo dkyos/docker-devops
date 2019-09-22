@@ -58,6 +58,7 @@ run() {
             --name=$IMAGE_NAME \
             -it \
             -p 8888:8888 \
+            -v $LOCAL_SRC:$CONTAINER_SRC \
             -v $(pwd)/.cache:/root/.cache \
             -v $(pwd)/.config:/root/.config \
             -v $(pwd)/.gnupg:/root/.gnupg \

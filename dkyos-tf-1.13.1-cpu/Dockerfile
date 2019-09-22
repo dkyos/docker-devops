@@ -70,6 +70,7 @@ RUN pip --no-cache-dir install -U keras \
     opencv-python \
     konlpy \
     nltk \
+    bs4 \
     bert-serving-server \
     bert-serving-client \
     pandas_ml
